@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Simple Calculator</h1>
+            
+            <form method="POST" action="/" class="calculator-form">
+                <div class="input-group">
+                    <label for="num1">Number 1</label>
+                    <input type="number" id="num1" name="num1" step="any" placeholder="Enter first number" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="operation">Operation</label>
+                    <select id="operation" name="operation" class="operation-select">
+                        <option value="+">Addition (+)</option>
+                        <option value="-">Subtraction (−)</option>
+                        <option value="*">Multiplication (×)</option>
+                        <option value="/">Division (÷)</option>
+                    </select>
+                </div>
+                
+                <div class="input-group">
+                    <label for="num2">Number 2</label>
+                    <input type="number" id="num2" name="num2" step="any" placeholder="Enter second number" required>
+                </div>
+                
+                <button type="submit" class="btn btn-calculate">Calculate</button>
+            </form>
+
+            {% if result is not none %}
+            <div class="result-display success">
+                <h2>Result</h2>
+                <p class="result-value">{{ result }}</p>
+            </div>
+            {% endif %}
+
+            {% if error %}
+            <div class="result-display error">
+                <h2>Error</h2>
+                <p class="error-message">{{ error }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
